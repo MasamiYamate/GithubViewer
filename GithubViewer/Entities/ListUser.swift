@@ -22,11 +22,4 @@ struct ListUser: Decodable {
         case avatarUrl = "avatar_url"
     }
 
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(Int.self, forKey: .id)
-        userName = try values.decode(String.self, forKey: .userName)
-        let rawAvatarUrl = try values.decode(String.self, forKey: .avatarUrl)
-        avatarUrl = URL(string: rawAvatarUrl)
-    }
 }

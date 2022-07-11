@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /// APIClient向けエラー
 enum APIClientError: Error {
     /// レスポンスがない

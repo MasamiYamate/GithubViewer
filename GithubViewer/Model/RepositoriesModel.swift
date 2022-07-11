@@ -24,7 +24,7 @@ final class RepositoriesModelImpl: RepositoriesModel {
 
     /// GithubClient
     private let client: GithubClient
-    
+
     /// initializer
     /// - Parameter client: GithubClient
     init(client: GithubClient = GithubClientImpl()) {

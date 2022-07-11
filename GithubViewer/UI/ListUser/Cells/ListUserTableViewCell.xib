@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListUserTableViewCell" rowHeight="70" id="KGk-i7-Jjw" customClass="ListUserTableViewCell" customModule="GithubViewer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="g2s-al-z2K">
+                        <rect key="frame" x="70" y="15" width="240" height="40"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Lv-VF-2iz" userLabel="Spacer View">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="19"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4S-Ee-qt4">
+                                <rect key="frame" x="0.0" y="19" width="240" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="21" id="5F8-eh-xzG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="t2b-CS-NwC"/>
+                        </constraints>
+                    </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZj-6b-iPg">
+                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="eAo-jm-jjW"/>
+                            <constraint firstAttribute="width" secondItem="SZj-6b-iPg" secondAttribute="height" multiplier="1:1" priority="999" id="kZc-Oa-Igu"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="g2s-al-z2K" firstAttribute="leading" secondItem="SZj-6b-iPg" secondAttribute="trailing" constant="10" id="6lN-3O-Ppj"/>
+                    <constraint firstItem="g2s-al-z2K" firstAttribute="centerY" secondItem="SZj-6b-iPg" secondAttribute="centerY" id="73t-KU-kSI"/>
+                    <constraint firstAttribute="trailing" secondItem="g2s-al-z2K" secondAttribute="trailing" constant="10" id="W8l-Ga-3mY"/>
+                    <constraint firstItem="SZj-6b-iPg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Zxt-eU-Ng2"/>
+                    <constraint firstItem="g2s-al-z2K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="l6R-iW-fz2"/>
+                    <constraint firstAttribute="bottom" secondItem="g2s-al-z2K" secondAttribute="bottom" constant="15" id="lwz-XI-Nk6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImageView" destination="SZj-6b-iPg" id="TTx-S6-7iW"/>
+                <outlet property="userNameLabel" destination="h4S-Ee-qt4" id="Qve-PE-ktM"/>
+            </connections>
+            <point key="canvasLocation" x="277" y="109"/>
+        </tableViewCell>
+    </objects>
+</document>

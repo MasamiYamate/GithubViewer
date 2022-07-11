@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  GithubViewer
+
+  Created by Masami on 2022/07/12.
+  
+*/
+// MARK: Error Alert
+"ErrorAlertSorryTitle" = "ごめんなさい";
+"ErrorAlertFetchFailureMessage" = "データの取得に失敗してしまいました。";
+
+"ErrorAlertCloseButtonTitle" = "Close";
+"ErrorAlertRetryButtonTitle" = "Retry";
+
