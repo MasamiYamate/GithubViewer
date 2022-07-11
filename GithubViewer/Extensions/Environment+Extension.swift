@@ -7,8 +7,10 @@
 
 import Foundation
 
+/// 自動生成されるEnvironmentのExtension
 extension Environment {
 
+    /// App内で利用する秘匿情報のKeyを記載
     enum Key: String {
         case githubToken = "GIT_HUB_TOKEN"
 

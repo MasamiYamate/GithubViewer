@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// ローディング表示用のFooterView
 final class IndicatorFooterView: UIView {
 
     private let indicatorView = UIActivityIndicatorView()
@@ -22,11 +23,13 @@ final class IndicatorFooterView: UIView {
     }
 
     @MainActor
+    /// indicatorViewのアニメーション開始
     func startAnimating() {
         indicatorView.startAnimating()
     }
 
     @MainActor
+    /// indicatorViewのアニメーション停止
     func stopAnimating() {
         indicatorView.stopAnimating()
     }
@@ -35,6 +38,7 @@ final class IndicatorFooterView: UIView {
 
 private extension IndicatorFooterView {
 
+    /// レイアウトの設定
     func setupConstraint() {
         indicatorView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(indicatorView)

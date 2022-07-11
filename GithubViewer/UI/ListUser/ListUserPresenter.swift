@@ -10,12 +10,19 @@ import Foundation
 @MainActor
 protocol ListUserPresenter {
 
+    /// 読み込み処理中の判定フラグ
     var isLoading: Bool { get }
 
+    /// ユーザーの読み込みを行う
     func requestLoadUsers() async throws
 
+    /// 取得済みユーザー数
+    /// - Returns: ユーザー数
     func fetchUserCount() -> Int
 
+    /// 指定したIndexのユーザー情報を取得する
+    /// - Parameter index: 任意のindex
+    /// - Returns: ユーザー情報
     func fetchUser(index: Int) -> ListUser?
 
 }
@@ -23,12 +30,14 @@ protocol ListUserPresenter {
 @MainActor
 final class ListUserPresenterImpl: ListUserPresenter {
 
+    /// 取得済みの一覧ユーザーデータ
     private var users: [ListUser] = [] {
         didSet {
             view.tableViewReload()
         }
     }
 
+    /// 読み込み処理中の判定フラグ
     private(set) var isLoading: Bool = false
 
     let view: ListUserView
@@ -41,6 +50,7 @@ final class ListUserPresenterImpl: ListUserPresenter {
         self.userListModel = userListModel
     }
 
+    /// ユーザーの読み込みを行う
     func requestLoadUsers() async throws {
         let since = users.last?.id
         do {
@@ -54,10 +64,15 @@ final class ListUserPresenterImpl: ListUserPresenter {
         }
     }
 
+    /// 取得済みユーザー数
+    /// - Returns: ユーザー数
     func fetchUserCount() -> Int {
         return users.count
     }
 
+    /// 指定したIndexのユーザー情報を取得する
+    /// - Parameter index: 任意のindex
+    /// - Returns: ユーザー情報
     func fetchUser(index: Int) -> ListUser? {
         guard users.indices.contains(index) else {
             return nil
