@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  UserDetail.swift
 //  GithubViewer
 //
 //  Created by Masami on 2022/07/09.
@@ -8,7 +8,7 @@
 import Foundation
 
 /// ユーザー情報
-struct User: Decodable {
+struct UserDetail: Decodable {
     /// id
     var id: Int
     /// プロフィール画像 URL
@@ -52,19 +52,4 @@ struct User: Decodable {
         case following
     }
 
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(Int.self, forKey: .id)
-        let rawAvatarUrl = try values.decode(String.self, forKey: .avatarUrl)
-        avatarUrl = URL(string: rawAvatarUrl)
-        userName = try values.decode(String.self, forKey: .userName)
-        company = try? values.decode(String.self, forKey: .company)
-        blog = try? values.decode(String.self, forKey: .blog)
-        email = try? values.decode(String.self, forKey: .email)
-        location = try? values.decode(String.self, forKey: .location)
-        twitterUserName = try? values.decode(String.self, forKey: .twitterUserName)
-        publicRepos = try values.decode(Int.self, forKey: .publicRepos)
-        followers = try values.decode(Int.self, forKey: .followers)
-        following = try values.decode(Int.self, forKey: .following)
-    }
 }

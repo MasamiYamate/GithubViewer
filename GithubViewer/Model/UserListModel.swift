@@ -8,7 +8,7 @@
 import Foundation
 
 /// ユーザーの一覧を取得
-protocol UsersModel {
+protocol UserListModel {
 
     /// ユーザーの一覧情報を取得する
     /// - Parameter since: 指定Id以後の値を取得するための基準値
@@ -18,7 +18,7 @@ protocol UsersModel {
 }
 
 /// ユーザーの一覧を取得 実装部
-final class UsersModelImpl: UsersModel {
+final class UserListModelImpl: UserListModel {
 
     /// GithubClient
     private let client: GithubClient

@@ -13,7 +13,7 @@ protocol UserModel {
     /// ユーザー情報を取得する
     /// - Parameter userName: ユーザー名
     /// - Returns: ユーザー情報
-    func request(userName: String) async throws -> User
+    func request(userName: String) async throws -> UserDetail
 
 }
 
@@ -32,7 +32,7 @@ final class UserModelImpl: UserModel {
     /// ユーザー情報を取得する
     /// - Parameter userName: ユーザー名
     /// - Returns: ユーザー情報
-    func request(userName: String) async throws -> User {
+    func request(userName: String) async throws -> UserDetail {
         return try await client.request(endpoint: .userDetail(userName: userName))
     }
 
