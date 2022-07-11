@@ -45,8 +45,17 @@ $ bundle install
 $ bundle exec pod install # プロジェクトのルートディレクトリ配下で実行
 ```
 
+## 環境変数の設定
 ### 暗号化ファイルの復号化
+事前に共有しています、パスワードを用いて秘匿化しているファイルを復号化します。
+
 ```
 $ openssl enc -aes-256-cbc -d -in .encrypted-env -out .env # プロジェクトのルートディレクトリ配下で実行
 enter aes-256-cbc decryption password:【指定したパスワード】
 ```
+
+### Enviroment.swiftの生成
+GithubViewer.xcworkspaceからプロジェクトを開き、``BuildTools``スキームを選択して一度ビルドします。
+ビルドに成功すると``GithubViewer/Resource/Enviroment.swift``が生成されます。
+
+※環境変数の設定を行わずにビルドは行えないので注意してください。

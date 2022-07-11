@@ -93,3 +93,7 @@ iOSInjectionProject/
 
 # Sensitivie
 .env
+Environment.swift
+
+# Gem
+vendor/
