@@ -7,14 +7,13 @@
 
 import UIKit
 
-@MainActor
-protocol ListUserView {
+protocol ListUserView: AnyObject {
 
-    func tableViewReload()
+    /// TableViewの再読み込みを行う
+    @MainActor func tableViewReload()
 
 }
 
-@MainActor
 /// ユーザー 一覧画面
 final class ListUserViewController: UIViewController, ListUserView {
 
@@ -35,12 +34,12 @@ final class ListUserViewController: UIViewController, ListUserView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        configure()
         loadUsers()
     }
 
     /// TableViewの再読み込みを行う
-    func tableViewReload() {
+    @MainActor func tableViewReload() {
         tableView.reloadData()
     }
 
@@ -48,12 +47,14 @@ final class ListUserViewController: UIViewController, ListUserView {
 
 private extension ListUserViewController {
 
-    /// TableViewの設定を行う
-    func setupTableView() {
-        tableView.register(type: ListUserTableViewCell.self)
+    /// Viewの設定を行う
+    @MainActor func configure() {
+        tableView.register(type: ListUserNameTableViewCell.self)
         tableView.tableFooterView = footerView
         tableView.dataSource = self
         tableView.delegate = self
+
+        navigationItem.title = NSLocalizedString("NavigationTitleUsers", comment: "")
     }
 
     /// User情報を取得する
@@ -61,20 +62,20 @@ private extension ListUserViewController {
         guard !presenter.isLoading else {
             return
         }
+        footerView.startAnimating()
         Task {
             do {
                 try await presenter.requestLoadUsers()
-                footerView.stopAnimating()
             } catch {
-                footerView.stopAnimating()
                 showErrorAlert(error: error)
             }
+            footerView.stopAnimating()
         }
     }
 
     /// エラーアラートを表示する
     /// - Parameter error: Error
-    func showErrorAlert(error: Error) {
+    @MainActor func showErrorAlert(error: Error) {
         // TODO: Errorを引数で受け取っているが、エラー内容によって文言を変化させることを今後想定
         AlertViewController.present(
             viewController: self,
@@ -94,6 +95,14 @@ private extension ListUserViewController {
         )
     }
 
+    func transitUserDetailView(user: ListUser) {
+        guard let detailView = UserDetailViewController.instantiate() else {
+            return
+        }
+        detailView.setUser(name: user.userName)
+        navigationController?.pushViewController(detailView, animated: true)
+    }
+
 }
 
 extension ListUserViewController: UITableViewDataSource {
@@ -103,7 +112,7 @@ extension ListUserViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(type: ListUserTableViewCell.self),
+        guard let cell = tableView.dequeueReusableCell(type: ListUserNameTableViewCell.self),
               let user = presenter.fetchUser(index: indexPath.row) else {
             return UITableViewCell()
         }
@@ -115,6 +124,14 @@ extension ListUserViewController: UITableViewDataSource {
 
 extension ListUserViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let user = presenter.fetchUser(index: indexPath.row) else {
+            return
+        }
+        transitUserDetailView(user: user)
+    }
+
 }
 
 extension ListUserViewController: UIScrollViewDelegate {
@@ -123,7 +140,6 @@ extension ListUserViewController: UIScrollViewDelegate {
         guard scrollView.contentOffset.y >= fetchScrollPosition else {
             return
         }
-        footerView.startAnimating()
         loadUsers()
     }
 
