@@ -5,9 +5,10 @@
 //  Created by Masami on 2022/07/13.
 //
 
-import Foundation
+import UIKit
 
-protocol UserDetailCell: AnyObject {
+/// ユーザー画面のセルが準拠するCell向けプロトコル
+protocol UserDetailCell: UITableViewCell {
 
     @MainActor func configure(data: Any)
 

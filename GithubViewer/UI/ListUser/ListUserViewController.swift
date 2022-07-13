@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// ユーザー 一覧画面
 protocol ListUserView: AnyObject {
 
     /// TableViewの再読み込みを行う
@@ -67,17 +68,15 @@ private extension ListUserViewController {
             do {
                 try await presenter.requestLoadUsers()
             } catch {
-                showErrorAlert(error: error)
+                showErrorAlert()
             }
             footerView.stopAnimating()
         }
     }
 
     /// エラーアラートを表示する
-    /// - Parameter error: Error
-    @MainActor func showErrorAlert(error: Error) {
-        // TODO: Errorを引数で受け取っているが、エラー内容によって文言を変化させることを今後想定
-        AlertViewController.present(
+    @MainActor func showErrorAlert() {
+        AlertViewHelper.present(
             viewController: self,
             contents: .init(title: NSLocalizedString("ErrorAlertSorryTitle", comment: ""),
                             message: NSLocalizedString("ErrorAlertFetchFailureMessage", comment: ""),

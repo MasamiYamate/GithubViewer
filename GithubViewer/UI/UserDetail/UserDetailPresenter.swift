@@ -8,72 +8,67 @@
 import Foundation
 import UIKit
 
+/// ユーザー詳細画面向けPresenter
 protocol UserDetailPresenter {
+
+    /// 初期データの読み込み済み判定フラグ
+    var isInitialized: Bool { get }
 
     /// 読み込み処理中の判定フラグ
     var isLoading: Bool { get }
 
-    func fetchSectionCount() -> Int
-
-    func fetchSectionInCount(section: Int) -> Int
-
-    func fetchSectionTitle(section: Int) -> String?
-
-    func fetchCellType(indexPath: IndexPath) -> UserDetailCell.Type?
-
-    func fetchCellData(indexPath: IndexPath) -> Any?
-
+    /// 初期データの取得処理
+    /// - Parameter userName: 検索対象のユーザー名
     func fetchInitialUserData(userName: String) async throws
 
+    /// ユーザーリポジトリの取得処理
     func fetchUserRepositories() async throws
+
+    /// セクションに表示するCell数を返却する
+    /// - Parameter section: Section index
+    /// - Returns: Cell数
+    func fetchSectionInCount(section: Int) -> Int
+
+    /// Cellに紐づくデータを返却する
+    /// - Parameter indexPath: CellのIndexPath
+    /// - Returns: Cellのデータ
+    func fetchCellData(indexPath: IndexPath) -> Any?
 
 }
 
+/// ユーザー詳細画面向けPresenterの実装部
 final class UserDetailPresenterImpl: UserDetailPresenter {
 
     typealias Result = (userData: UserDetail, repositories: [Repository])
 
-    private(set) var isLoading: Bool = false
+    /// 初期データの読み込み済み判定フラグ
+    var isInitialized: Bool {
+        let hasUserData = userData != nil
+        let hasRepositories = !repositories.isEmpty
+        return hasUserData && hasRepositories
+    }
 
-    private weak var view: UserDetailView?
+    /// 読み込み処理中の判定フラグ
+    private(set) var isLoading: Bool = false
 
     private let userModel: UserModel
 
     private let repositoriesModel: RepositoriesModel
 
-    private var userData: UserDetail?
-
     private var repositories: [[Repository]] = []
 
-    /// Section情報
-    private enum Section: Int, CaseIterable {
-        case userInfomation
-        case repositories
+    private weak var view: UserDetailView?
 
-        var title: String {
-            switch self {
-            case .userInfomation:
-                return NSLocalizedString("SectionTitleUser", comment: "")
-            case .repositories:
-                return NSLocalizedString("SectionTitleRepositories", comment: "")
-            }
+    private var userData: UserDetail?
+
+    /// 取得したリポジトリの中で、フォークではないリポジトリの配列
+    private var originalRepositories: [Repository] {
+        return repositories.reduce([]) { store, repositories in
+            return store + repositories
+        }.filter { repository in
+            let isOriginal = !repository.isFork
+            return isOriginal
         }
-
-        var sortOrder: [UserDetailCell.Type] {
-            switch self {
-            case .userInfomation:
-                return [
-                    UserDetailNameTableViewCell.self,
-                    UserDetailFollowTableViewCell.self,
-                    UserDetailBiographyTableViewCell.self
-                ]
-            case .repositories:
-                return [
-                    UserDetailRepositoryTableViewCell.self
-                ]
-            }
-        }
-
     }
 
     init(view: UserDetailView,
@@ -84,6 +79,8 @@ final class UserDetailPresenterImpl: UserDetailPresenter {
         self.repositoriesModel = repositoriesModel
     }
 
+    /// 初期データの取得処理
+    /// - Parameter userName: 検索対象のユーザー名
     func fetchInitialUserData(userName: String) async throws {
         isLoading = true
         async let userData = userModel.request(userName: userName)
@@ -95,6 +92,7 @@ final class UserDetailPresenterImpl: UserDetailPresenter {
         isLoading = false
     }
 
+    /// ユーザーリポジトリの取得処理
     func fetchUserRepositories() async throws {
         guard let userData = userData else {
             return
@@ -106,66 +104,34 @@ final class UserDetailPresenterImpl: UserDetailPresenter {
         isLoading = false
     }
 
-    func fetchSectionCount() -> Int {
-        return Section.allCases.count
-    }
-
-    func fetchSectionTitle(section: Int) -> String? {
-        return Section(rawValue: section)?.title
-    }
-
+    /// セクションに表示するCell数を返却する
+    /// - Parameter section: Section index
+    /// - Returns: Cell数
     func fetchSectionInCount(section: Int) -> Int {
-        guard let type = Section(rawValue: section) else {
+        guard let type = UserDetailTableSection(rawValue: section) else {
             return 0
         }
         switch type {
-        case .userInfomation:
+        case .userData:
             // UserData読み込み完了までは0件
-            return userData == nil ? 0 : type.sortOrder.count
+            return userData == nil ? 0 : type.cellSortOrder.count
         case .repositories:
-            let repositories = fetchedUserRepositories()
-            return repositories.count
+            return originalRepositories.count
         }
     }
 
-    func fetchCellType(indexPath: IndexPath) -> UserDetailCell.Type? {
-        guard let type = Section(rawValue: indexPath.section) else {
-            return nil
-        }
-        switch type {
-        case .userInfomation:
-            return type.sortOrder[indexPath.row]
-        case .repositories:
-            return type.sortOrder.first
-        }
-    }
-
+    /// Cellに紐づくデータを返却する
+    /// - Parameter indexPath: CellのIndexPath
+    /// - Returns: Cellのデータ
     func fetchCellData(indexPath: IndexPath) -> Any? {
-        guard let type = Section(rawValue: indexPath.section) else {
+        guard let type = UserDetailTableSection(rawValue: indexPath.section) else {
             return nil
         }
         switch type {
-        case .userInfomation:
+        case .userData:
             return userData
         case .repositories:
-            let repositories = fetchedUserRepositories()
-            return repositories[indexPath.row]
-        }
-    }
-
-}
-
-private extension UserDetailPresenterImpl {
-
-    func fetchedUserRepositories(inclFork: Bool = false) -> [Repository] {
-        return repositories.reduce([]) { store, repositories in
-            return store + repositories
-        }.filter { repository in
-            guard !inclFork else {
-                return true
-            }
-            let isOriginal = !repository.isFork
-            return isOriginal
+            return originalRepositories[indexPath.row]
         }
     }
 
