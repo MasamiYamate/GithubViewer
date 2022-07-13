@@ -30,12 +30,26 @@
 		94044510287AE821006FC67A /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404450C287AE821006FC67A /* Repository.swift */; };
 		94044511287AE821006FC67A /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404450E287AE821006FC67A /* UserDetail.swift */; };
 		94044518287AEC54006FC67A /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94044517287AEC54006FC67A /* UserListModel.swift */; };
-		941AA8A7287C84C60096AB3E /* ListUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA8A5287C84C60096AB3E /* ListUserTableViewCell.swift */; };
-		941AA8A8287C84C60096AB3E /* ListUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941AA8A6287C84C60096AB3E /* ListUserTableViewCell.xib */; };
+		941AA8A7287C84C60096AB3E /* ListUserNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA8A5287C84C60096AB3E /* ListUserNameTableViewCell.swift */; };
+		941AA8A8287C84C60096AB3E /* ListUserNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941AA8A6287C84C60096AB3E /* ListUserNameTableViewCell.xib */; };
 		941AA8AA287C85940096AB3E /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA8A9287C85940096AB3E /* UITableView+Extension.swift */; };
 		941AA8AD287C8B380096AB3E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 941AA8AC287C8B380096AB3E /* Kingfisher */; };
 		941AA8AF287C8FA90096AB3E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 941AA8AE287C8FA90096AB3E /* Localizable.strings */; };
 		941AA8B4287C916F0096AB3E /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA8B3287C916F0096AB3E /* AlertViewController.swift */; };
+		941AA8B7287C9A410096AB3E /* UserDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941AA8B6287C9A410096AB3E /* UserDetailViewController.storyboard */; };
+		941AA8B9287C9A630096AB3E /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA8B8287C9A630096AB3E /* UserDetailViewController.swift */; };
+		941AA8BB287C9C3B0096AB3E /* Instantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA8BA287C9C3B0096AB3E /* Instantiatable.swift */; };
+		941AA8BD287CA1110096AB3E /* UserDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA8BC287CA1110096AB3E /* UserDetailPresenter.swift */; };
+		941AA8C1287DBD3E0096AB3E /* UserDetailNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA8BF287DBD3E0096AB3E /* UserDetailNameTableViewCell.swift */; };
+		941AA8C2287DBD3E0096AB3E /* UserDetailNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941AA8C0287DBD3E0096AB3E /* UserDetailNameTableViewCell.xib */; };
+		941AA8C5287DC0190096AB3E /* UserDetailFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA8C3287DC0190096AB3E /* UserDetailFollowTableViewCell.swift */; };
+		941AA8C6287DC0190096AB3E /* UserDetailFollowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941AA8C4287DC0190096AB3E /* UserDetailFollowTableViewCell.xib */; };
+		943DDC12287EAC2400009087 /* UserDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943DDC11287EAC2400009087 /* UserDetailCell.swift */; };
+		943DDC15287EBA3D00009087 /* UserDetailRepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943DDC13287EBA3D00009087 /* UserDetailRepositoryTableViewCell.swift */; };
+		943DDC16287EBA3D00009087 /* UserDetailRepositoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943DDC14287EBA3D00009087 /* UserDetailRepositoryTableViewCell.xib */; };
+		943DDC19287EF51A00009087 /* KRProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 943DDC18287EF51A00009087 /* KRProgressHUD */; };
+		943DDC1C287F152B00009087 /* UserDetailBiographyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943DDC1A287F152B00009087 /* UserDetailBiographyTableViewCell.swift */; };
+		943DDC1D287F152B00009087 /* UserDetailBiographyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943DDC1B287F152B00009087 /* UserDetailBiographyTableViewCell.xib */; };
 		94A94B5528749DBF00DAAE28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A94B5428749DBF00DAAE28 /* AppDelegate.swift */; };
 		94A94B5728749DBF00DAAE28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A94B5628749DBF00DAAE28 /* SceneDelegate.swift */; };
 		94A94B5928749DBF00DAAE28 /* ListUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A94B5828749DBF00DAAE28 /* ListUserViewController.swift */; };
@@ -62,11 +76,24 @@
 		9404450C287AE821006FC67A /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		9404450E287AE821006FC67A /* UserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
 		94044517287AEC54006FC67A /* UserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListModel.swift; sourceTree = "<group>"; };
-		941AA8A5287C84C60096AB3E /* ListUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUserTableViewCell.swift; sourceTree = "<group>"; };
-		941AA8A6287C84C60096AB3E /* ListUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListUserTableViewCell.xib; sourceTree = "<group>"; };
+		941AA8A5287C84C60096AB3E /* ListUserNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUserNameTableViewCell.swift; sourceTree = "<group>"; };
+		941AA8A6287C84C60096AB3E /* ListUserNameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListUserNameTableViewCell.xib; sourceTree = "<group>"; };
 		941AA8A9287C85940096AB3E /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		941AA8AE287C8FA90096AB3E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		941AA8B3287C916F0096AB3E /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		941AA8B6287C9A410096AB3E /* UserDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetailViewController.storyboard; sourceTree = "<group>"; };
+		941AA8B8287C9A630096AB3E /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		941AA8BA287C9C3B0096AB3E /* Instantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instantiatable.swift; sourceTree = "<group>"; };
+		941AA8BC287CA1110096AB3E /* UserDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailPresenter.swift; sourceTree = "<group>"; };
+		941AA8BF287DBD3E0096AB3E /* UserDetailNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailNameTableViewCell.swift; sourceTree = "<group>"; };
+		941AA8C0287DBD3E0096AB3E /* UserDetailNameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailNameTableViewCell.xib; sourceTree = "<group>"; };
+		941AA8C3287DC0190096AB3E /* UserDetailFollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailFollowTableViewCell.swift; sourceTree = "<group>"; };
+		941AA8C4287DC0190096AB3E /* UserDetailFollowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailFollowTableViewCell.xib; sourceTree = "<group>"; };
+		943DDC11287EAC2400009087 /* UserDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailCell.swift; sourceTree = "<group>"; };
+		943DDC13287EBA3D00009087 /* UserDetailRepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailRepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		943DDC14287EBA3D00009087 /* UserDetailRepositoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailRepositoryTableViewCell.xib; sourceTree = "<group>"; };
+		943DDC1A287F152B00009087 /* UserDetailBiographyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailBiographyTableViewCell.swift; sourceTree = "<group>"; };
+		943DDC1B287F152B00009087 /* UserDetailBiographyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailBiographyTableViewCell.xib; sourceTree = "<group>"; };
 		94A94B5128749DBF00DAAE28 /* GithubViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A94B5428749DBF00DAAE28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A94B5628749DBF00DAAE28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				943DDC19287EF51A00009087 /* KRProgressHUD in Frameworks */,
 				941AA8AD287C8B380096AB3E /* Kingfisher in Frameworks */,
 				0E236B6FE5C22E62EA08BC32 /* Pods_GithubViewer.framework in Frameworks */,
 				940444EB28773B9C006FC67A /* Alamofire in Frameworks */,
@@ -153,8 +181,8 @@
 		941AA8A4287C846D0096AB3E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				941AA8A5287C84C60096AB3E /* ListUserTableViewCell.swift */,
-				941AA8A6287C84C60096AB3E /* ListUserTableViewCell.xib */,
+				941AA8A5287C84C60096AB3E /* ListUserNameTableViewCell.swift */,
+				941AA8A6287C84C60096AB3E /* ListUserNameTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -163,8 +191,36 @@
 			isa = PBXGroup;
 			children = (
 				941AA8B3287C916F0096AB3E /* AlertViewController.swift */,
+				941AA8BA287C9C3B0096AB3E /* Instantiatable.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		941AA8B5287C9A200096AB3E /* UserDetail */ = {
+			isa = PBXGroup;
+			children = (
+				941AA8BE287DBD090096AB3E /* Cells */,
+				941AA8B6287C9A410096AB3E /* UserDetailViewController.storyboard */,
+				941AA8B8287C9A630096AB3E /* UserDetailViewController.swift */,
+				941AA8BC287CA1110096AB3E /* UserDetailPresenter.swift */,
+			);
+			path = UserDetail;
+			sourceTree = "<group>";
+		};
+		941AA8BE287DBD090096AB3E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				941AA8BF287DBD3E0096AB3E /* UserDetailNameTableViewCell.swift */,
+				941AA8C0287DBD3E0096AB3E /* UserDetailNameTableViewCell.xib */,
+				941AA8C3287DC0190096AB3E /* UserDetailFollowTableViewCell.swift */,
+				941AA8C4287DC0190096AB3E /* UserDetailFollowTableViewCell.xib */,
+				943DDC11287EAC2400009087 /* UserDetailCell.swift */,
+				943DDC13287EBA3D00009087 /* UserDetailRepositoryTableViewCell.swift */,
+				943DDC14287EBA3D00009087 /* UserDetailRepositoryTableViewCell.xib */,
+				943DDC1A287F152B00009087 /* UserDetailBiographyTableViewCell.swift */,
+				943DDC1B287F152B00009087 /* UserDetailBiographyTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		94A94B4828749DBF00DAAE28 = {
@@ -242,6 +298,7 @@
 		94BC6AE728772E6800DA6CA1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				941AA8B5287C9A200096AB3E /* UserDetail */,
 				94A94B5F28749DC100DAAE28 /* LaunchScreen.storyboard */,
 				941AA8B2287C91400096AB3E /* Common */,
 				94B85662287BDDD40045C325 /* ListUser */,
@@ -297,6 +354,7 @@
 			packageProductDependencies = (
 				940444EA28773B9C006FC67A /* Alamofire */,
 				941AA8AC287C8B380096AB3E /* Kingfisher */,
+				943DDC18287EF51A00009087 /* KRProgressHUD */,
 			);
 			productName = GithubViewer;
 			productReference = 94A94B5128749DBF00DAAE28 /* GithubViewer.app */;
@@ -332,6 +390,7 @@
 			packageReferences = (
 				940444E928773B9C006FC67A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				941AA8AB287C8B380096AB3E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				943DDC17287EF51A00009087 /* XCRemoteSwiftPackageReference "KRProgressHUD" */,
 			);
 			productRefGroup = 94A94B5228749DBF00DAAE28 /* Products */;
 			projectDirPath = "";
@@ -348,11 +407,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				941AA8B7287C9A410096AB3E /* UserDetailViewController.storyboard in Resources */,
 				941AA8AF287C8FA90096AB3E /* Localizable.strings in Resources */,
-				941AA8A8287C84C60096AB3E /* ListUserTableViewCell.xib in Resources */,
+				941AA8A8287C84C60096AB3E /* ListUserNameTableViewCell.xib in Resources */,
 				94A94B6128749DC100DAAE28 /* LaunchScreen.storyboard in Resources */,
 				94A94B5E28749DC100DAAE28 /* Assets.xcassets in Resources */,
 				94A94B5C28749DBF00DAAE28 /* ListUserViewController.storyboard in Resources */,
+				941AA8C6287DC0190096AB3E /* UserDetailFollowTableViewCell.xib in Resources */,
+				941AA8C2287DBD3E0096AB3E /* UserDetailNameTableViewCell.xib in Resources */,
+				943DDC16287EBA3D00009087 /* UserDetailRepositoryTableViewCell.xib in Resources */,
+				943DDC1D287F152B00009087 /* UserDetailBiographyTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,14 +488,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				941AA8A7287C84C60096AB3E /* ListUserTableViewCell.swift in Sources */,
+				941AA8A7287C84C60096AB3E /* ListUserNameTableViewCell.swift in Sources */,
 				94A94B5928749DBF00DAAE28 /* ListUserViewController.swift in Sources */,
+				941AA8BB287C9C3B0096AB3E /* Instantiatable.swift in Sources */,
 				94A94B5528749DBF00DAAE28 /* AppDelegate.swift in Sources */,
+				943DDC15287EBA3D00009087 /* UserDetailRepositoryTableViewCell.swift in Sources */,
+				941AA8C1287DBD3E0096AB3E /* UserDetailNameTableViewCell.swift in Sources */,
 				94B85659287B32490045C325 /* RepositoriesModel.swift in Sources */,
 				94B85656287B26190045C325 /* UserModel.swift in Sources */,
 				9404450F287AE821006FC67A /* ListUser.swift in Sources */,
 				94B85654287B1BAC0045C325 /* Environment+Extension.swift in Sources */,
 				941AA8B4287C916F0096AB3E /* AlertViewController.swift in Sources */,
+				943DDC1C287F152B00009087 /* UserDetailBiographyTableViewCell.swift in Sources */,
+				941AA8C5287DC0190096AB3E /* UserDetailFollowTableViewCell.swift in Sources */,
+				941AA8B9287C9A630096AB3E /* UserDetailViewController.swift in Sources */,
+				941AA8BD287CA1110096AB3E /* UserDetailPresenter.swift in Sources */,
+				943DDC12287EAC2400009087 /* UserDetailCell.swift in Sources */,
 				94A94B5728749DBF00DAAE28 /* SceneDelegate.swift in Sources */,
 				94B85667287BE0680045C325 /* IndicatorFooterView.swift in Sources */,
 				94044510287AE821006FC67A /* Repository.swift in Sources */,
@@ -710,6 +782,14 @@
 				version = 7.3.0;
 			};
 		};
+		943DDC17287EF51A00009087 /* XCRemoteSwiftPackageReference "KRProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krimpedance/KRProgressHUD";
+			requirement = {
+				kind = exactVersion;
+				version = 3.4.7;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -722,6 +802,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 941AA8AB287C8B380096AB3E /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		943DDC18287EF51A00009087 /* KRProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 943DDC17287EF51A00009087 /* XCRemoteSwiftPackageReference "KRProgressHUD" */;
+			productName = KRProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

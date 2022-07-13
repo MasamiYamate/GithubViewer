@@ -49,7 +49,7 @@ final class GithubClientImpl: GithubClient {
                        headers: .init(
                         [
                             .accept("application/vnd.github+json"),
-                            .authorization(Environment.Key.githubToken.rawValue)
+                            .authorization("token \(Environment.Key.githubToken.value)")
                         ]
                        )
             ).responseDecodable { (response: DataResponse<T, AFError>) in

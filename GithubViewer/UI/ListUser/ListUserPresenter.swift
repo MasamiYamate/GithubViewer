@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 protocol ListUserPresenter {
 
     /// 読み込み処理中の判定フラグ
@@ -27,22 +26,23 @@ protocol ListUserPresenter {
 
 }
 
-@MainActor
 final class ListUserPresenterImpl: ListUserPresenter {
 
     /// 取得済みの一覧ユーザーデータ
     private var users: [ListUser] = [] {
         didSet {
-            view.tableViewReload()
+            Task {
+                await view?.tableViewReload()
+            }
         }
     }
 
     /// 読み込み処理中の判定フラグ
     private(set) var isLoading: Bool = false
 
-    let view: ListUserView
+    private weak var view: ListUserView?
 
-    let userListModel: UserListModel
+    private let userListModel: UserListModel
 
     init(view: ListUserView,
          userListModel: UserListModel = UserListModelImpl()) {

@@ -15,22 +15,22 @@ final class IndicatorFooterView: UIView {
     init() {
         let rect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50.0)
         super.init(frame: rect)
-        setupConstraint()
+        Task {
+            await setupConstraint()
+        }
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    @MainActor
     /// indicatorViewのアニメーション開始
-    func startAnimating() {
+    @MainActor func startAnimating() {
         indicatorView.startAnimating()
     }
 
-    @MainActor
     /// indicatorViewのアニメーション停止
-    func stopAnimating() {
+    @MainActor func stopAnimating() {
         indicatorView.stopAnimating()
     }
 
@@ -39,7 +39,7 @@ final class IndicatorFooterView: UIView {
 private extension IndicatorFooterView {
 
     /// レイアウトの設定
-    func setupConstraint() {
+    @MainActor func setupConstraint() {
         indicatorView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(indicatorView)
         NSLayoutConstraint.activate([

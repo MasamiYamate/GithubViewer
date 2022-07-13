@@ -34,16 +34,4 @@ struct Repository: Decodable {
         case htmlURL = "html_url"
     }
 
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(Int.self, forKey: .id)
-        name = try values.decode(String.self, forKey: .name)
-        stargazersCount = try values.decode(Int.self, forKey: .stargazersCount)
-        language = try? values.decode(String.self, forKey: .language)
-        description = try? values.decode(String.self, forKey: .description)
-        isFork = try values.decode(Bool.self, forKey: .isFork)
-        let rawHtmlUrl = try values.decode(String.self, forKey: .htmlURL)
-        htmlURL = URL(string: rawHtmlUrl)
-    }
-
 }

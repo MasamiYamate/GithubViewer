@@ -12,3 +12,9 @@
 "ErrorAlertCloseButtonTitle" = "Close";
 "ErrorAlertRetryButtonTitle" = "Retry";
 
+// MARK: Navigation Bar Title
+"NavigationTitleUsers" = "Users";
+
+// MARK: UserDetailView
+"SectionTitleUser" = "User";
+"SectionTitleRepositories" = "Repositories";

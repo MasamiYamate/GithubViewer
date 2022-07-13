@@ -1,5 +1,5 @@
 //
-//  ListUserTableViewCell.swift
+//  ListUserNameTableViewCell.swift
 //  GithubViewer
 //
 //  Created by Masami on 2022/07/12.
@@ -8,9 +8,8 @@
 import Kingfisher
 import UIKit
 
-@MainActor
 /// 一覧画面向け ユーザー情報セル
-final class ListUserTableViewCell: UITableViewCell {
+final class ListUserNameTableViewCell: UITableViewCell {
 
     /// アバター用ImageView
     @IBOutlet private weak var avatarImageView: UIImageView! {
@@ -25,7 +24,7 @@ final class ListUserTableViewCell: UITableViewCell {
 
     /// Configure
     /// - Parameter user: User情報
-    func configure(user: ListUser) {
+    @MainActor func configure(user: ListUser) {
         avatarImageView.kf.setImage(with: user.avatarUrl)
         userNameLabel.text = user.userName
     }
