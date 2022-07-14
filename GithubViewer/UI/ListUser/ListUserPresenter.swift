@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// ユーザー 一覧画面のPresenter
 protocol ListUserPresenter {
 
     /// 読み込み処理中の判定フラグ
@@ -26,6 +27,7 @@ protocol ListUserPresenter {
 
 }
 
+/// ユーザー 一覧画面のPresenter 実装部
 final class ListUserPresenterImpl: ListUserPresenter {
 
     /// 取得済みの一覧ユーザーデータ

@@ -6,8 +6,8 @@
   
 */
 // MARK: Error Alert
-"ErrorAlertSorryTitle" = "ごめんなさい";
-"ErrorAlertFetchFailureMessage" = "データの取得に失敗してしまいました。";
+"ErrorAlertSorryTitle" = "Sorry...";
+"ErrorAlertFetchFailureMessage" = "データの取得に失敗しました。";
 
 "ErrorAlertCloseButtonTitle" = "Close";
 "ErrorAlertRetryButtonTitle" = "Retry";

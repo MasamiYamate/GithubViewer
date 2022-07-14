@@ -8,7 +8,7 @@
 import Kingfisher
 import UIKit
 
-/// 詳細画面向けユーザー名Cell
+/// ユーザー情報 ユーザー名Cell
 final class UserDetailNameTableViewCell: UITableViewCell {
 
     /// アバター用ImageView

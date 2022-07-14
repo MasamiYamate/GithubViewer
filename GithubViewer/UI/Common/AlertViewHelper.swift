@@ -1,5 +1,5 @@
 //
-//  AlertViewController.swift
+//  AlertViewHelper.swift
 //  GithubViewer
 //
 //  Created by Masami on 2022/07/12.
@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class AlertViewController {
+/// アラート表示のヘルパークラス
+final class AlertViewHelper {
 
     /// 表示コンテンツの引数用モデル
     struct Contents {
