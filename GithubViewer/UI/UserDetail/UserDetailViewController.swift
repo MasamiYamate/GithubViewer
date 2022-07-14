@@ -54,8 +54,6 @@ final class UserDetailViewController: UIViewController, UserDetailView, Instanti
             } catch {
                 showErrorAlert(actions: [
                     .init(title: NSLocalizedString("ErrorAlertCloseButtonTitle", comment: ""),
-                          style: .cancel),
-                    .init(title: NSLocalizedString("ErrorAlertCloseButtonTitle", comment: ""),
                           style: .cancel,
                           handler: { [weak self] _ in
                             self?.popViewController()
@@ -134,6 +132,7 @@ private extension UserDetailViewController {
     /// エラーアラートを表示する
     /// - Parameter actions: アラートに表示するAction
     @MainActor func showErrorAlert(actions: [UIAlertAction]) {
+        KRProgressHUD.dismiss()
         AlertViewHelper.present(
             viewController: self,
             contents: .init(title: NSLocalizedString("ErrorAlertSorryTitle", comment: ""),
