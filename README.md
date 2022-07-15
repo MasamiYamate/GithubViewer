@@ -21,19 +21,19 @@ $ rbenv init
 
   eval "$(rbenv init - zsh)"
 $ echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc # パスを通す
-$ source .zshrc
+$ source ~/.zshrc
 $ rbenv install 3.1.2 # 2022/06/30 時点の安定版
 $ rbenv versions 
 * system
   3.1.2 # 3.1.2がインストールされていることを確認
-$ cd ./Feed # プロジェクトのルートディレクトリに移動 パスは適宜読み替える
+$ cd ./GithubViewer # プロジェクトのルートディレクトリに移動 パスは適宜読み替える
 $ rbenv local 3.1.2 # feedディレクトリ内のRuby Versionが3.1.2に指定
 $ ruby -v # ruby 3.1.2のパスが通っていることを確認する
 ```
 
 ### bundlerのインストール
 ```
-$ gem install bundler
+$ gem install bundler # プロジェクトのルートディレクトリ配下で実行
 $ rbenv rehash
 $ bundler -v
   Bundler version 2.3.17
