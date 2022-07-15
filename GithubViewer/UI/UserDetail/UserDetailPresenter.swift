@@ -83,8 +83,9 @@ final class UserDetailPresenterImpl: UserDetailPresenter {
     /// - Parameter userName: 検索対象のユーザー名
     func fetchInitialUserData(userName: String) async throws {
         isLoading = true
+        let fetchPage = repositories.count + 1
         async let userData = userModel.request(userName: userName)
-        async let repositories = repositoriesModel.request(userName: userName, page: repositories.count)
+        async let repositories = repositoriesModel.request(userName: userName, page: fetchPage)
         let result: Result = try await (userData: userData, repositories: repositories)
         self.userData = result.userData
         self.repositories.append(result.repositories)
@@ -98,9 +99,12 @@ final class UserDetailPresenterImpl: UserDetailPresenter {
             return
         }
         isLoading = true
-        let repositories = try await repositoriesModel.request(userName: userData.userName, page: repositories.count)
-        self.repositories.append(repositories)
-        await view?.tableViewReload()
+        let fetchPage = repositories.count + 1
+        let repositories = try await repositoriesModel.request(userName: userData.userName, page: fetchPage)
+        if !repositories.isEmpty {
+            self.repositories.append(repositories)
+            await view?.tableViewReload()
+        }
         isLoading = false
     }
 
