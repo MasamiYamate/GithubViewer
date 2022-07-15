@@ -58,7 +58,13 @@ final class ListUserPresenterImpl: ListUserPresenter {
         do {
             isLoading = true
             let result = try await userListModel.request(since: since)
-            users += result
+            let newUsers = result.filter({ user in
+                let isNewUser = users.first(where: { fetchedUser in
+                    fetchedUser.id == user.id
+                }) == nil
+                return isNewUser
+            })
+            users += newUsers
             isLoading = false
         } catch {
             isLoading = false
